@@ -12,6 +12,6 @@ public class Main {
         String output = reader.readLine();
 
         System.out.println("Starting indexing folder...");
-        new DanielIndexer(input, output).executeIndex();
+        new DanielIndexer(input, output, reader).executeIndex();
     }
 }
