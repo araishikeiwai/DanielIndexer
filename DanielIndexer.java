@@ -18,6 +18,8 @@ public class DanielIndexer {
         if (!this.input.isDirectory()) {
             printError("Input is not a folder!");
             getInput();
+        } else {
+            System.out.println("You are good to go!");
         }
     }
 
@@ -30,16 +32,22 @@ public class DanielIndexer {
     }
 
     public void getOutput() throws Exception {
+        this.output = getOutputFile();
+        writer = new BufferedWriter(new FileWriter(this.output));
+        System.out.println("You are good to go!");
+    }
+
+    private File getOutputFile() throws Exception {
         System.out.println("Choose where to put the index file!");
-        this.output = new File(reader.readLine());
-        if (this.output.exists()) {
+        File temp = new File(reader.readLine());
+        if (temp.exists()) {
             System.out.println("\nOutput file already exists, do you want to overwrite? (Y/N)");
             String response = reader.readLine();
             if (!response.equalsIgnoreCase("Y")) {
-                getOutput();
+                return getOutputFile();
             }
         }
-        writer = new BufferedWriter(new FileWriter(this.output));
+        return temp;
     }
 
     public void executeIndex() throws Exception {
