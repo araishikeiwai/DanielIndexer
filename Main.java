@@ -7,7 +7,10 @@ public class Main {
         DanielIndexer indexer = new DanielIndexer();
 
         indexer.getInput();
+        System.out.println();
+
         indexer.getOutput();
+        System.out.println();
 
         System.out.println("\nStarting indexing folder...");
         
