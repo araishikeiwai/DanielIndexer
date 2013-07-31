@@ -4,14 +4,15 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] araishikeiwai) throws Exception {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        DanielIndexer indexer = new DanielIndexer();
 
-        System.out.println("Choose what folder to index!");
-        String input = reader.readLine();
-        System.out.println("Choose where to put the index file!");
-        String output = reader.readLine();
+        indexer.getInput();
+        indexer.getOutput();
 
-        System.out.println("Starting indexing folder...");
-        new DanielIndexer(input, output, reader).executeIndex();
+        System.out.println("\nStarting indexing folder...\n");
+        
+        indexer.executeIndex();
+
+        System.out.println("\nIndexing folder finished...\n");
     }
 }
