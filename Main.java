@@ -9,10 +9,10 @@ public class Main {
         indexer.getInput();
         indexer.getOutput();
 
-        System.out.println("\nStarting indexing folder...\n");
+        System.out.println("\nStarting indexing folder...");
         
         indexer.executeIndex();
 
-        System.out.println("\nIndexing folder finished...\n");
+        System.out.println("\nIndexing folder finished...");
     }
 }
