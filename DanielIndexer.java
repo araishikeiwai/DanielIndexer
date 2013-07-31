@@ -4,7 +4,6 @@ import java.util.*;
 public class DanielIndexer {
 
     private File input;
-    private File output;
     private BufferedWriter writer;
     private BufferedReader reader;
 
@@ -13,9 +12,8 @@ public class DanielIndexer {
     }
 
     public void getInput() throws Exception {
-        int count = 0;
-        while (!(this.input = getInputFile(count++)).exists());
-        if (!this.input.isDirectory()) {
+        for (int count = 0; !(input = getInputFile(count++)).exists(); );
+        if (!input.isDirectory()) {
             printError("Input is not a folder!");
             getInput();
         } else {
@@ -32,8 +30,7 @@ public class DanielIndexer {
     }
 
     public void getOutput() throws Exception {
-        this.output = getOutputFile();
-        writer = new BufferedWriter(new FileWriter(this.output));
+        writer = new BufferedWriter(new FileWriter(getOutputFile()));
         System.out.println("You are good to go!");
     }
 
@@ -42,8 +39,7 @@ public class DanielIndexer {
         File temp = new File(reader.readLine());
         if (temp.exists()) {
             System.out.println("\nOutput file already exists, do you want to overwrite? (Y/N)");
-            String response = reader.readLine();
-            if (!response.equalsIgnoreCase("Y")) {
+            if (!reader.readLine().equalsIgnoreCase("Y")) {
                 return getOutputFile();
             }
         }
@@ -56,8 +52,7 @@ public class DanielIndexer {
     }
 
     private void indexFolder(File folder) throws Exception {
-        File[] files = folder.listFiles();
-        for (File file : files) {
+        for (File file : folder.listFiles()) {
             if (file.isDirectory()) {
                 indexFolder(file);
             } else {
