@@ -56,7 +56,9 @@ public class DanielIndexer {
             if (file.isDirectory()) {
                 indexFolder(file);
             } else {
-                writer.write(file.getAbsolutePath());
+                String filename = file.getAbsolutePath();
+                filename = filename.substring(input.getAbsolutePath().length())
+                writer.write(filename + "\n");
             }
         }
     }
