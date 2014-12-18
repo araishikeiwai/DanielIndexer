@@ -52,12 +52,20 @@ public class DanielIndexer {
     }
 
     private void indexFolder(File folder) throws Exception {
+        // TODO SORT THEM!!!
+        if (folder.getName().equals("lost+found"))
+            return;
         for (File file : folder.listFiles()) {
             if (file.isDirectory()) {
                 indexFolder(file);
             } else {
-                writer.write(file.getAbsolutePath().substring(input.getAbsolutePath().length() + 1));
-                writer.newLine();
+                String filename = file.getName();
+                if (filename.length() >= 9 && filename.substring(filename.length() - 9).equals(".DS_Store")) {
+                    file.delete();
+                } else {
+                    writer.write(file.getAbsolutePath().substring(input.getAbsolutePath().length() + 1));
+                    writer.newLine();
+                }
             }
         }
     }
